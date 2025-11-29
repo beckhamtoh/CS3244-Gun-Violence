@@ -1,134 +1,37 @@
-### **Decoding Gun Violence with Machine Learning**
-## Table of Contents
-- [1. Project Overview](#1-project-overview)
-- [2. Data Preparation](#2-data-preparation)
-- [3. Exploratory Data Analysis (EDA)](#3-exploratory-data-analysis-eda)
-- [4. Supervised Learning Models](#4-supervised-learning-models)
-- [5. Unsupervised Learning Models](#5-unsupervised-learning-models)
-- [6. Advanced Models](#6-advanced-models)
-- [7. Model Comparison Summary](#7-model-comparison-summary)
-- [8. Conclusions](#8-conclusions)
+# Decoding Gun Violence with Machine Learning
 
-#### **1. Project Overview**
+This repository contains an extensive analysis of gun violence data using various **Machine Learning** models, aiming to uncover key contributing factors, trends, and predictive insights. 
 
-* **Objective**: Clearly state what you are trying to predict / classify / understand.
-* **Dataset**: Brief description of the guns dataset (source, size, variables).
-* **Key Questions / Hypotheses**:
+**Key Questions / Hypotheses**
+As part of our project objectives, we focus on the following guiding research questions and/or hypotheses:
 
-  * Example: Is gun ownership correlated with crime rate across states?
-  * Example: Can we cluster states by their firearm and safety characteristics?
+1. How do demographic, situational and contextual factors (e.g. race, age, education, place of incident) shape both the reason for gun incidents and the likelihood of police involvement?  
+2. Are there underlying behavioural or demographic patterns, revealed through clustering, that distinguish different groups of gun incidents? Do these patterns align with the classification outcomes?  
+3. Can machine learning models reliably identify the key risk factors that differentiate suicides, homicides, accidental shootings and undertermined cases? Do these risk factors reveal broader social or demographic trends observable in the dataset?   
 
 ---
 
-#### **2. Data Preparation**
+## Repository Structure
 
-**2.1 Data Cleaning**
+### Project Structure
 
-* Handling missing values (drops, imputation strategies, justification)
+#### Data 📊
 
-**2.2 Feature Engineering**
+* `Guns incident Data.csv` - The primary raw file, found on the Kaggle website.
+* `guns_incident_data_cleaned.csv` - The resulting dataset after data imputation.  
+* `guns_encoded` - The resulting dataset after one-hot encoding to convert categorical columns into numerical columns.
 
-* One-hot encoding of categorical variables
+#### Source Code
+* `01_cleaning.ipynb` - Analyse missing values, decide method of data imputationg, as well as performing one-hot encoding
+* `02_eda.ipynb` - Exploratory Data Analysis of the dataset
 
----
+##### Models 🧠
+###### Supervised Models
+* `03_police_involvement_analysis` - Model aims to identify the key factors influencing police involvement in gun incidents. 
+* `04_classifying_reasons_for_gun_incidents` - Model aims to predict the causes of these gun incidents
+* `05_risk_profile_analysis.ipynb` - Finds combinations of features that best explain high-risk vs low-risk incidents.
 
-#### **3. Exploratory Data Analysis (EDA)**
-
-* Summary statistics tables
-* Visualizations (heatmaps, distributions, scatter plots)
-* Insights and interpretations (not just plots)
-
-  * Example: “Gun death rate shows a strong positive correlation with X.”
-  * Example: “Ownership levels differ significantly by region.”
-
----
-
-### **4. Supervised Learning Models**
-
-> Note: If different supervised models serve different roles, we group by *purpose*.
-
-**4.1 Predictive Regression Models**
-*(If you predict continuous outcomes like death rates, expenditures, etc.)*
-
-* Model(s): Linear Regression, Random Forest Regression, XGBoost Regression, etc.
-* Feature selection approach (Lasso, correlation filter, domain constraint, etc.)
-* Performance metrics (MAE, RMSE, R²)
-* Key Findings:
-
-  * Which model performs best and under what conditions
-  * Interpretation of important features
-
-**4.2 Classification Models**
-*(If your task involves grouping into categories, e.g., high vs low gun violence states)*
-
-* Model(s): Logistic Regression, Decision Tree, SVM, Naive Bayes, etc.
-* Class balancing techniques (SMOTE, undersampling, class weights)
-* Performance metrics (Accuracy, F1-score, ROC AUC)
-* Interpretation / confusion matrix insights
-
----
-
-### **5. Unsupervised Learning Models**
-
-**5.1 Clustering Analysis**
-
-* Model(s): K-Means, Hierarchical Clustering, DBSCAN, etc.
-* Scaling and distance metric justification
-* Cluster evaluation: inertia, silhouette score, dendrogram
-* Interpretation: Describe each cluster in human terms
-  e.g., “Cluster 3 contains states with high ownership but low homicide rates.”
-
-**5.2 Dimensionality Reduction (If Used)**
-
-* PCA / t-SNE / UMAP
-* Variance explained
-* 2D visualizations of state clusters
-
----
-
-### **6. Advanced / Specialized Models**
-
-*(This is where you put anything more technical or experimental.)*
-
-Examples:
-
-* Ensemble Stacking / Blending
-* Time-series forecasting (if dataset spans years)
-* Bayesian regression
-* Neural networks (MLP, TabNet, etc.)
-
-For each:
-
-* What additional advantage it provides
-* Comparison against baseline supervised models
-
----
-
-### **7. Model Comparison Summary**
-
-| Model / Type        | Purpose        | Best Metric(s)   | Strengths                  | Weaknesses                 |
-| ------------------- | -------------- | ---------------- | -------------------------- | -------------------------- |
-| Linear Regression   | Regression     | R² = 0.76        | Interpretable              | Lower accuracy             |
-| XGBoost             | Regression     | RMSE = ___       | Highest predictive power   | Harder to explain          |
-| Logistic Regression | Classification | F1 = ___         | Works well with small data | May underfit               |
-| K-means             | Clustering     | Silhouette = ___ | Clear separations found    | Assumes spherical clusters |
-
----
-
-### **8. Conclusions**
-
-* What did the models teach us about gun ownership and violence?
-* Which factors most strongly influence the outcome?
-* Limitations (data completeness, causality vs correlation)
-* Suggested future work
-
----
-
-### **9. Appendix (Optional)**
-
-* Full data dictionary
-* Full model hyperparameters
-* Code references
-
----
+###### Unsupervised Models
+* `06_hierarchical_clustering.ipynb` - Initial exploration of clustering with a sub sample of the dataset
+* `07_kprototypes_clustering.ipynb` - Deep dive clustering analysis.
 
